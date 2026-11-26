@@ -27,6 +27,14 @@ OPERASI = {
 }
 
 
+def baca_angka(teks):
+    while True:
+        try:
+            return float(input(teks))
+        except ValueError:
+            print("Input harus berupa angka.")
+
+
 def tampilkan_menu():
     print("\n=== KALKULATOR ===")
     for nomor, (nama, _, _) in OPERASI.items():
@@ -45,8 +53,8 @@ def main():
             print("Pilihan tidak tersedia, pilih sesuai menu.")
             continue
         _, simbol, fungsi = OPERASI[pilihan]
-        a = float(input("Angka pertama: "))
-        b = float(input("Angka kedua: "))
+        a = baca_angka("Angka pertama: ")
+        b = baca_angka("Angka kedua: ")
         print(f"{a} {simbol} {b} = {fungsi(a, b)}")
 
 
