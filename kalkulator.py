@@ -13,7 +13,7 @@ def main():
         if pilihan == "0":
             print("Sampai jumpa!")
             break
-        print("Pilihan tidak tersedia.")
+        print("Pilihan tidak tersedia, pilih sesuai menu.")
 
 
 if __name__ == "__main__":
