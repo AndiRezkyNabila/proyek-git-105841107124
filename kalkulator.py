@@ -1,8 +1,24 @@
 # kalkulator.py - Kalkulator interaktif
 
 
+def tambah(a, b):
+    return a + b
+
+
+def kurang(a, b):
+    return a - b
+
+
+OPERASI = {
+    "1": ("Tambah", "+", tambah),
+    "2": ("Kurang", "-", kurang),
+}
+
+
 def tampilkan_menu():
     print("\n=== KALKULATOR ===")
+    for nomor, (nama, _, _) in OPERASI.items():
+        print(f"{nomor}. {nama}")
     print("0. Keluar")
 
 
@@ -13,7 +29,13 @@ def main():
         if pilihan == "0":
             print("Sampai jumpa!")
             break
-        print("Pilihan tidak tersedia, pilih sesuai menu.")
+        if pilihan not in OPERASI:
+            print("Pilihan tidak tersedia, pilih sesuai menu.")
+            continue
+        _, simbol, fungsi = OPERASI[pilihan]
+        a = float(input("Angka pertama: "))
+        b = float(input("Angka kedua: "))
+        print(f"{a} {simbol} {b} = {fungsi(a, b)}")
 
 
 if __name__ == "__main__":
