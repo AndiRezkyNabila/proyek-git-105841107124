@@ -14,6 +14,8 @@ def kali(a, b):
 
 
 def bagi(a, b):
+    if b == 0:
+        return "Error: pembagian dengan nol"
     return a / b
 
 
