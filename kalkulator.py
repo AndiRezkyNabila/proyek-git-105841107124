@@ -27,27 +27,41 @@ OPERASI = {
 }
 
 
+def tampilkan_riwayat(riwayat):
+    if not riwayat:
+        print("Riwayat masih kosong.")
+    for baris in riwayat:
+        print(baris)
+
+
 def tampilkan_menu():
     print("\n=== KALKULATOR ===")
     for nomor, (nama, _, _) in OPERASI.items():
         print(f"{nomor}. {nama}")
+    print("5. Riwayat")
     print("0. Keluar")
 
 
 def main():
+    riwayat = []
     while True:
         tampilkan_menu()
         pilihan = input("Pilih menu: ").strip()
         if pilihan == "0":
             print("Sampai jumpa!")
             break
+        if pilihan == "5":
+            tampilkan_riwayat(riwayat)
+            continue
         if pilihan not in OPERASI:
             print("Pilihan tidak tersedia, pilih sesuai menu.")
             continue
         _, simbol, fungsi = OPERASI[pilihan]
         a = float(input("Angka pertama: "))
         b = float(input("Angka kedua: "))
-        print(f"{a} {simbol} {b} = {fungsi(a, b)}")
+        baris = f"{a} {simbol} {b} = {fungsi(a, b)}"
+        riwayat.append(baris)
+        print(baris)
 
 
 if __name__ == "__main__":
