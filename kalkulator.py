@@ -27,6 +27,14 @@ OPERASI = {
 }
 
 
+def baca_angka(teks):
+    while True:
+        try:
+            return float(input(teks))
+        except ValueError:
+            print("Input harus berupa angka.")
+
+
 def tampilkan_riwayat(riwayat):
     if not riwayat:
         print("Riwayat masih kosong.")
@@ -57,8 +65,8 @@ def main():
             print("Pilihan tidak tersedia, pilih sesuai menu.")
             continue
         _, simbol, fungsi = OPERASI[pilihan]
-        a = float(input("Angka pertama: "))
-        b = float(input("Angka kedua: "))
+        a = baca_angka("Angka pertama: ")
+        b = baca_angka("Angka kedua: ")
         baris = f"{a} {simbol} {b} = {fungsi(a, b)}"
         riwayat.append(baris)
         print(baris)
